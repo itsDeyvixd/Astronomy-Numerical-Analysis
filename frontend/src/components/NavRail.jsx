@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SECTIONS } from "../lib/sections.js";
+import logoUrl from "../assets/logo.svg";
+import unalLogoUrl from "../assets/Logo_UNAL_PNG.png";
 
 const ANCHOR_IDS = SECTIONS.filter((s) => s.kind === "anchor").map((s) => s.id);
 
@@ -71,7 +73,7 @@ export default function NavRail() {
         className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-line bg-bg/95 backdrop-blur px-6 py-8 lg:flex"
       >
         <Link to="/">
-          <img src="/logo.svg" className="w-16 h-16 -ml-3 -mt-2" alt="Logo" />
+          <img src={logoUrl} className="w-16 h-16 -ml-3 -mt-2" alt="Logo" />
         </Link>
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-ink-faint">
           Modelos Astronómicos
@@ -105,7 +107,7 @@ export default function NavRail() {
 
         <div className="mt-auto font-mono text-[12px] leading-relaxed text-ink-faint flex flex-col items-center text-center">
           <img 
-            src="/Logo_UNAL_PNG.png" 
+            src={unalLogoUrl} 
             alt="Escudo Universidad Nacional" 
             className="w-full max-w-[140px] object-contain mb-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
           />
@@ -119,7 +121,7 @@ export default function NavRail() {
         className="fixed inset-x-0 top-0 z-40 border-b border-line bg-bg/95 backdrop-blur lg:hidden"
       >
         <div className="px-4 pt-3 flex items-center">
-          <img src="/logo.svg" className="w-10 h-10 -ml-2" alt="Logo" />
+          <img src={logoUrl} className="w-10 h-10 -ml-2" alt="Logo" />
         </div>
         <ul className="flex gap-1 overflow-x-auto px-3 py-2.5">
           {SECTIONS.map((s) => {
