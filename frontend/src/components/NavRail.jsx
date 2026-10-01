@@ -114,9 +114,9 @@ export default function NavRail() {
 
         <div className="mt-auto font-mono text-[12px] leading-relaxed text-ink-faint flex flex-col items-center text-center">
           <img 
-            src="/Logo_UNAL_PNG.png" 
-            alt="Escudo Universidad Nacional" 
-            className="w-full max-w-[140px] object-contain mb-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+            src="/logo.png" 
+            alt="Logo Astronomía Computacional" 
+            className="w-full max-w-[140px] object-contain mb-3 opacity-80 hover:opacity-100 transition-all duration-300" 
           />
           Análisis Numérico
         </div>
