@@ -27,16 +27,7 @@ function useActiveAnchor(enabled) {
   return activeId;
 }
 
-/** Barra de bits decorativa: S·1 / E·8 / M·23 — el motivo visual del sitio en miniatura. */
-function BitGlyph() {
-  return (
-    <div className="flex h-2 w-full overflow-hidden rounded-[1px]">
-      <div style={{ width: "3.125%", background: "var(--color-sign)" }} />
-      <div style={{ width: "25%", background: "var(--color-exp)" }} />
-      <div style={{ width: "71.875%", background: "var(--color-mant)" }} />
-    </div>
-  );
-}
+
 
 export default function NavRail() {
   const location = useLocation();
@@ -80,7 +71,7 @@ export default function NavRail() {
         className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-line bg-bg/95 backdrop-blur px-6 py-8 lg:flex"
       >
         <Link to="/">
-          <BitGlyph />
+          <img src="/logo.svg" className="w-16 h-16 -ml-3 -mt-2" alt="Logo" />
         </Link>
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-ink-faint">
           Modelos Astronómicos
@@ -114,9 +105,9 @@ export default function NavRail() {
 
         <div className="mt-auto font-mono text-[12px] leading-relaxed text-ink-faint flex flex-col items-center text-center">
           <img 
-            src="/logo.png" 
-            alt="Logo Astronomía Computacional" 
-            className="w-full max-w-[140px] object-contain mb-3 opacity-80 hover:opacity-100 transition-all duration-300" 
+            src="/Logo_UNAL_PNG.png" 
+            alt="Escudo Universidad Nacional" 
+            className="w-full max-w-[140px] object-contain mb-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
           />
           Análisis Numérico
         </div>
@@ -127,8 +118,8 @@ export default function NavRail() {
         aria-label="Secciones del proyecto"
         className="fixed inset-x-0 top-0 z-40 border-b border-line bg-bg/95 backdrop-blur lg:hidden"
       >
-        <div className="px-4 pt-3">
-          <BitGlyph />
+        <div className="px-4 pt-3 flex items-center">
+          <img src="/logo.svg" className="w-10 h-10 -ml-2" alt="Logo" />
         </div>
         <ul className="flex gap-1 overflow-x-auto px-3 py-2.5">
           {SECTIONS.map((s) => {
