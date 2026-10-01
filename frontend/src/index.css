@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  /* Superficies: negro-azulado de "die" de silicio, no negro puro */
+  --color-bg: #0b0f14;
+  --color-surface: #121822;
+  --color-surface-2: #1a2230;
+  --color-line: #2a3444;
+
+  /* Texto */
+  --color-ink: #edeff2;
+  --color-ink-dim: #8c97a8;
+  --color-ink-faint: #5a6474;
+
+  /* Lenguaje de canal IEEE 754: signo · exponente · mantisa.
+     Se usa consistentemente en todo el sitio, nunca como acento suelto. */
+  --color-sign: #f2665a;
+  --color-sign-dim: #7a3730;
+  --color-exp: #f2b84b;
+  --color-exp-dim: #7a5f28;
+  --color-mant: #4fd1c5;
+  --color-mant-dim: #285a54;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-mant);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mant);
+    outline-offset: 2px;
+  }
+}
