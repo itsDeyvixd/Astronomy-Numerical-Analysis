@@ -1,8 +1,10 @@
-﻿export default function Conclusiones() {
+import PageTransition from "../components/PageTransition.jsx";
+
+export default function Conclusiones() {
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold font-mono">Conclusiones</h1>
+    <PageTransition className="mx-auto max-w-4xl py-12 px-6">
+      <h1 className="text-3xl font-bold font-display text-sign">Conclusiones</h1>
       <p className="mt-4 text-ink-dim">Contenido de la sección...</p>
-    </div>
+    </PageTransition>
   );
 }

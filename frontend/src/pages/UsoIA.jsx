@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import geminiImg from "../assets/Gemini1.png";
+import PageTransition from "../components/PageTransition.jsx";
 
 export default function UsoIA() {
   useEffect(() => {
@@ -7,7 +8,7 @@ export default function UsoIA() {
   }, []);
 
   return (
-    <div className="mx-auto max-w-3xl py-12 px-6">
+    <PageTransition className="mx-auto max-w-3xl py-12 px-6">
       <h1 className="text-3xl font-display font-bold text-exp">Uso de IA</h1>
       
       <p className="mt-4 text-ink-dim leading-relaxed">
@@ -15,28 +16,28 @@ export default function UsoIA() {
         la utilidad fundamental de los métodos numéricos en la resolución de modelos astronómicos.
       </p>
 
-      <div className="mt-10 rounded-xl border border-line bg-surface p-6 sm:p-8 shadow-xl shadow-bg/50">
+      <div className="mt-10 rounded-xl border border-line bg-surface/80 backdrop-blur-md p-4 sm:p-8 shadow-2xl shadow-bg/50 transition-all hover:border-exp/30">
         
         {/* Prompt del usuario */}
-        <div className="mb-8 flex gap-4 border-b border-line pb-6">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-2 text-ink">
+        <div className="mb-8 flex gap-3 sm:gap-4 border-b border-line pb-6">
+          <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-surface-2 text-ink text-sm sm:text-base shadow-inner">
             U
           </div>
           <div>
-            <p className="text-sm font-semibold text-ink mb-1">Usuario</p>
-            <p className="text-base text-ink-dim leading-relaxed">
+            <p className="text-xs sm:text-sm font-semibold text-ink mb-1">Usuario</p>
+            <p className="text-sm sm:text-base text-ink-dim leading-relaxed">
               ¿De qué manera los métodos numéricos de aproximación de raíces permiten resolver modelos astronómicos que carecen de solución matemática exacta?
             </p>
           </div>
         </div>
 
         {/* Respuesta de Gemini */}
-        <div className="flex gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-exp-dim text-exp font-bold">
+        <div className="flex gap-3 sm:gap-4">
+          <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-exp-dim text-exp font-bold text-sm sm:text-base shadow-glow shadow-exp/20">
             G
           </div>
           
-          <div className="text-ink-dim leading-relaxed space-y-5 text-base">
+          <div className="text-ink-dim leading-relaxed space-y-5 text-sm sm:text-base overflow-hidden">
             <p>
               En la mecánica celeste, la cinemática de los cuerpos orbitales a menudo genera <strong className="text-ink">ecuaciones trascendentes</strong>, es decir, expresiones donde la variable de interés se encuentra atrapada simultáneamente como término algebraico y como argumento de una función trigonométrica. Dado que es imposible despejar analíticamente esta variable, los métodos numéricos transforman la limitación matemática en un problema algorítmico computacional: la búsqueda iterativa de una raíz <span className="font-mono text-ink bg-bg px-1.5 py-0.5 rounded">f(x) = 0</span>.
             </p>
@@ -99,6 +100,6 @@ export default function UsoIA() {
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }
