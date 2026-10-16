@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
+import KeplerIntuicion from "../components/KeplerIntuicion.jsx";
 import { Telescope, Compass, Flame, Orbit } from "lucide-react";
 
 const TEMAS = [
@@ -16,7 +17,7 @@ const TEMAS = [
     id: "kepler", 
     title: "Ecuación de Kepler", 
     subtitle: "Mecánica Celeste y Órbitas", 
-    author: "Por definir", 
+    author: "Deyvi & Juan Huertas", 
     icon: Orbit,
     accent: "exp" 
   },
@@ -392,11 +393,13 @@ export default function IntuicionInicial() {
           </article>
         )}
 
+        {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI & JUAN HUERTAS) ---------------- */}
+        {activeTab === "kepler" && <KeplerIntuicion />}
+
         {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
-        {activeTab !== "redshift" && (
+        {activeTab !== "redshift" && activeTab !== "kepler" && (
           <div className="animate-in fade-in duration-300 py-16 px-6 border border-dashed border-line rounded-xl flex flex-col items-center justify-center text-center bg-surface/20">
             <div className="p-3 rounded-full bg-surface-2 text-ink-dim mb-3">
-              {activeTab === "kepler" && <Orbit className="size-8 text-exp" />}
               {activeTab === "lagrange" && <Compass className="size-8 text-sign" />}
               {activeTab === "wien" && <Flame className="size-8 text-exp" />}
             </div>
