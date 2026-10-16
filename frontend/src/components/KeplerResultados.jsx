@@ -133,7 +133,7 @@ export default function KeplerResultados() {
       {/* Encabezado */}
       <div className="border-b border-line pb-6">
         <span className="text-xs font-mono text-exp uppercase tracking-wider block font-semibold mb-1">
-          Resultados Experimentales · Deyvi
+          Resultados Experimentales · Deyvi Ardila
         </span>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-ink">
           Determinación Numérica de la Posición Orbital: Implementación, Límites de Máquina y Aplicación Real del Método de Bisección

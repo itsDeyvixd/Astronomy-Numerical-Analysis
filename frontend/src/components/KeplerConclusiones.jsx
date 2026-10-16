@@ -7,15 +7,26 @@ export default function KeplerConclusiones() {
   return (
     <article className="space-y-10 animate-in fade-in duration-300">
       
-      {/* Encabezado */}
-      <div className="border-b border-line pb-6">
-        <span className="text-xs font-mono text-exp uppercase tracking-wider block font-semibold mb-1">
-          Conclusiones y Respuestas Orientadoras · Deyvi
-        </span>
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-ink">
-          Conclusiones Técnicas: Ecuación de Kepler mediante el Método de Bisección
-        </h2>
-      </div>
+      {/* Encabezado del Informe (Idéntico estilo visual al de Nicolás) */}
+      <header className="p-6 rounded-2xl border border-exp/30 bg-surface/80 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-exp/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="flex flex-wrap items-center justify-between gap-4 relative z-10">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-wider text-exp font-semibold">
+              Sección 7 del Informe Experimental · Mecánica Celeste
+            </span>
+            <h2 className="text-2xl font-bold font-display text-ink mt-1">
+              Conclusiones y Defensa de la Pregunta Orientadora
+            </h2>
+            <p className="text-xs font-mono text-ink-dim mt-1">
+              Ecuación de Kepler <Formula tex="M = E - e\sin(E)" /> · Búsqueda de Raíces por Bisección
+            </p>
+          </div>
+          <div className="px-3.5 py-1.5 rounded-lg border border-line bg-surface font-mono text-xs text-ink-dim shadow-sm">
+            Autor: <span className="text-exp font-semibold">Deyvi Ardila</span>
+          </div>
+        </div>
+      </header>
 
       {/* ---------------- RESPUESTA A LA PREGUNTA ORIENTADORA ---------------- */}
       <section className="space-y-4">

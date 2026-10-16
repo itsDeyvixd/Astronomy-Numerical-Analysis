@@ -21,7 +21,7 @@ const TEMAS = [
     id: "kepler", 
     title: "Ecuación de Kepler", 
     subtitle: "Mecánica Celeste y Órbitas", 
-    author: "Deyvi", 
+    author: "Deyvi Ardila", 
     icon: Orbit,
     accent: "exp" 
   },
