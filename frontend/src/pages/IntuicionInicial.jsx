@@ -9,7 +9,7 @@ const TEMAS = [
     id: "redshift", 
     title: "Corrimiento al Rojo (z)", 
     subtitle: "Supernovas Tipo Ia · Método de Bisección", 
-    author: "Nicolas Betancur", 
+    author: "Nicolas", 
     icon: Telescope,
     accent: "mant" 
   },
@@ -17,7 +17,7 @@ const TEMAS = [
     id: "kepler", 
     title: "Ecuación de Kepler", 
     subtitle: "Mecánica Celeste y Órbitas", 
-    author: "Deyvi & Juan Huertas", 
+    author: "Deyvi", 
     icon: Orbit,
     accent: "exp" 
   },
@@ -25,7 +25,7 @@ const TEMAS = [
     id: "lagrange", 
     title: "Puntos de Lagrange", 
     subtitle: "Equilibrio Gravitacional de 3 Cuerpos", 
-    author: "Por definir", 
+    author: "German", 
     icon: Compass,
     accent: "sign" 
   },
@@ -33,7 +33,7 @@ const TEMAS = [
     id: "wien", 
     title: "Ley de Wien", 
     subtitle: "Radiación de Cuerpo Negro", 
-    author: "Por definir", 
+    author: "Huertas", 
     icon: Flame,
     accent: "exp" 
   },

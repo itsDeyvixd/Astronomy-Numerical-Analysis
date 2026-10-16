@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
+import KeplerConclusiones from "../components/KeplerConclusiones.jsx";
 import { 
   Telescope, Orbit, Compass, Flame, CheckCircle2, 
   ShieldCheck, Cpu, TrendingDown, Scale, Lightbulb
@@ -11,7 +12,7 @@ const TEMAS = [
     id: "redshift", 
     title: "Corrimiento al Rojo (z)", 
     subtitle: "Supernovas Tipo Ia · Método de Bisección", 
-    author: "Nicolas Betancur", 
+    author: "Nicolas", 
     icon: Telescope,
     accent: "mant" 
   },
@@ -19,7 +20,7 @@ const TEMAS = [
     id: "kepler", 
     title: "Ecuación de Kepler", 
     subtitle: "Mecánica Celeste y Órbitas", 
-    author: "Por definir", 
+    author: "Deyvi", 
     icon: Orbit,
     accent: "exp" 
   },
@@ -27,7 +28,7 @@ const TEMAS = [
     id: "lagrange", 
     title: "Puntos de Lagrange", 
     subtitle: "Equilibrio Gravitacional de 3 Cuerpos", 
-    author: "Por definir", 
+    author: "German", 
     icon: Compass,
     accent: "sign" 
   },
@@ -35,7 +36,7 @@ const TEMAS = [
     id: "wien", 
     title: "Ley de Wien", 
     subtitle: "Radiación de Cuerpo Negro", 
-    author: "Por definir", 
+    author: "Huertas", 
     icon: Flame,
     accent: "exp" 
   },
@@ -230,11 +231,13 @@ export default function Conclusiones() {
           </article>
         )}
 
+        {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI) ---------------- */}
+        {activeTab === "kepler" && <KeplerConclusiones />}
+
         {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
-        {activeTab !== "redshift" && (
+        {activeTab !== "redshift" && activeTab !== "kepler" && (
           <div className="animate-in fade-in duration-300 py-16 px-6 border border-dashed border-line rounded-xl flex flex-col items-center justify-center text-center bg-surface/20">
             <div className="p-3 rounded-full bg-surface-2 text-ink-dim mb-3">
-              {activeTab === "kepler" && <Orbit className="size-8 text-exp" />}
               {activeTab === "lagrange" && <Compass className="size-8 text-sign" />}
               {activeTab === "wien" && <Flame className="size-8 text-exp" />}
             </div>

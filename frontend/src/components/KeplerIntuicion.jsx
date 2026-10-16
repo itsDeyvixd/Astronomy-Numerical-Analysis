@@ -83,7 +83,7 @@ export default function KeplerIntuicion() {
       {/* Título y Autores */}
       <div className="border-b border-line pb-6">
         <span className="text-xs font-mono text-exp uppercase tracking-wider block font-semibold mb-1">
-          Trabajo de Investigación · Deyvi &amp; Juan Huertas
+          Trabajo de Investigación · Deyvi
         </span>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-ink">
           Resolución Numérica de la Ecuación de Kepler: Órbitas Planetarias, Métodos de Aproximación y Límites Computacionales
