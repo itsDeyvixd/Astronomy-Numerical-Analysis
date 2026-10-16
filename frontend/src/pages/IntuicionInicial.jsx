@@ -3,6 +3,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
 import KeplerIntuicion from "../components/KeplerIntuicion.jsx";
 import { Telescope, Compass, Flame, Orbit } from "lucide-react";
+import WienIntuicion from "../components/WienIntuicion.jsx";
 
 const TEMAS = [
   { 
@@ -395,6 +396,7 @@ export default function IntuicionInicial() {
 
         {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI & JUAN HUERTAS) ---------------- */}
         {activeTab === "kepler" && <KeplerIntuicion />}
+        {activeTab === "wien" && <WienIntuicion />}
 
         {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
         {activeTab !== "redshift" && activeTab !== "kepler" && (
