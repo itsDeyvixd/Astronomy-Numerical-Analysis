@@ -2,11 +2,11 @@ import { useState } from "react";
 import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
 import KeplerConclusiones from "../components/KeplerConclusiones.jsx";
+import WienConclusiones from "../components/WienConclusiones.jsx";
 import { 
   Telescope, Orbit, Compass, Flame, CheckCircle2, 
   ShieldCheck, Cpu, TrendingDown, Scale, Lightbulb
 } from "lucide-react";
-
 const TEMAS = [
   { 
     id: "redshift", 
@@ -233,7 +233,7 @@ export default function Conclusiones() {
 
         {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI) ---------------- */}
         {activeTab === "kepler" && <KeplerConclusiones />}
-
+        {activeTab === "wien" && <WienConclusiones />}
         {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
         {activeTab !== "redshift" && activeTab !== "kepler" && (
           <div className="animate-in fade-in duration-300 py-16 px-6 border border-dashed border-line rounded-xl flex flex-col items-center justify-center text-center bg-surface/20">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
 import KeplerResultados from "../components/KeplerResultados.jsx";
+import WienResultados from "../components/WienResultados.jsx";
 import errorImg from "../assets/error-no-monotono-biseccion.png";
 import { 
   Telescope, Orbit, Compass, Flame, Table, 
@@ -889,6 +890,7 @@ def biseccion_cosmologica(a=0.0, b=5.0, tol=1e-6, max_iter=100):
 
         {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI) ---------------- */}
         {activeTab === "kepler" && <KeplerResultados />}
+        {activeTab === "wien" && <WienResultados />}
 
         {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
         {activeTab !== "redshift" && activeTab !== "kepler" && (
