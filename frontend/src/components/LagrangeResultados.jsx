@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Code2, Download, FlaskConical } from "lucide-react";
+import { Code2, Download } from "lucide-react";
 import Formula from "./Formula.jsx";
 import { LagrangeHeader, LagrangeMath, LagrangeSection, LagrangeSources } from "./LagrangeShared.jsx";
 import data from "../lib/lagrangeData.json";
@@ -37,6 +37,7 @@ export default function LagrangeResultados() {
   const [method, setMethod] = useState("bisection");
   const [seed, setSeed] = useState("0.01");
   const [allRows, setAllRows] = useState(false);
+  const sourceRef = useRef(null);
   const reference = data.references[point];
   const parsedSeed = Number(seed);
   const validSeed = seed.trim() !== "" && Number.isFinite(parsedSeed) && parsedSeed > 0 && (point !== "L1" || parsedSeed < 1);
@@ -62,7 +63,42 @@ export default function LagrangeResultados() {
 
   return <article className="space-y-8">
     <LagrangeHeader stage="Resultados experimentales" title="Lagrange: bisección frente a Newton">
-      <span className="inline-flex gap-2 items-center"><FlaskConical className="size-4 shrink-0 text-sign" /> 48 ejecuciones guardadas y 6 pruebas de semillas; laboratorio que vuelve a calcular con el mismo código.</span>
+      <div className="space-y-5">
+        <p>El equilibrio Sol–Tierra se transforma en una raíz del quíntico de Euler. La comparación permite observar cómo bisección y Newton localizan una misma posición y cómo el redondeo limita la precisión alcanzable.</p>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" className="inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-xs font-mono text-ink-dim transition-colors hover:bg-surface-2 hover:text-ink" onClick={() => { sourceRef.current.open = true; sourceRef.current.scrollIntoView({ behavior: "smooth", block: "start" }); }}>
+            <Code2 aria-hidden="true" className="size-4 text-sign" /> Ver código JavaScript
+          </button>
+          <a download className="inline-flex items-center gap-2 rounded-lg border border-sign/40 bg-sign/10 px-3 py-2 text-xs font-mono font-semibold text-sign transition-colors hover:bg-sign/20" href={`${base}lagrangeSolver.js`}>
+            <Download aria-hidden="true" className="size-4" /> Descargar motor .js
+          </a>
+        </div>
+        <div className="space-y-4 border-t border-line/60 pt-4">
+          <p className="text-xs text-ink-dim">Resumen del cálculo seleccionado: <span className="font-semibold text-ink">{POINTS[point].name}</span></p>
+          <dl className="grid grid-cols-1 gap-5 text-xs font-mono sm:grid-cols-2 lg:grid-cols-4" aria-label="Resumen del cálculo seleccionado">
+            <div className="min-w-0 space-y-1">
+              <dt className="text-ink-faint">Raíz aproximada (<Formula tex="r_k" />)</dt>
+              <dd className="break-words font-semibold text-mant">{active.root.toPrecision(16)}</dd>
+              <dd className="text-ink-dim">Traza: {effectiveMethod === "bisection" ? "bisección" : "Newton"}</dd>
+            </div>
+            <div className="min-w-0 space-y-1">
+              <dt className="text-ink-faint">Distancia desde {POINTS[point].origin}</dt>
+              <dd className="font-semibold text-exp">{(active.root * LAGRANGE_MODEL.distanceKm).toLocaleString("es-CO", { maximumFractionDigits: 3 })} km</dd>
+              <dd className="text-ink-dim">Error numérico: {sci(active.error * LAGRANGE_MODEL.distanceKm * 1000)} m</dd>
+            </div>
+            <div className="min-w-0 space-y-1">
+              <dt className="text-ink-faint">Pasos: bisección / Newton</dt>
+              <dd className="font-semibold text-mant">{runs.bisection.steps.at(-1).k} / {runs.newton?.steps.at(-1).k ?? "—"}</dd>
+              <dd className="text-ink-dim">Con <Formula tex={`\\tau=${tol.toExponential(0).replace(/e([+-]?\d+)/, "\\times10^{$1}")}`} /></dd>
+            </div>
+            <div className="min-w-0 space-y-1">
+              <dt className="text-ink-faint">Precisión de cálculo</dt>
+              <dd className="font-semibold text-sign">{precision === "float32" ? "binary32" : "binary64"}</dd>
+              <dd className="text-ink-dim">IEEE 754 · {precision === "float32" ? 24 : 53} bits efectivos</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
     </LagrangeHeader>
 
     <LagrangeSection title="1. Diseño experimental y reproducibilidad">
@@ -181,7 +217,7 @@ export default function LagrangeResultados() {
         <li>Se distinguen estancamiento, residuo cero en máquina y tolerancia. El error contra la referencia se muestra como comprobación independiente y nunca se usa para decidir las iteraciones.</li>
         <li>La referencia usa el decimal de μ declarado. Los métodos usan su representación redondeada y los coeficientes redondeados del formato; esa perturbación también forma parte del error medido.</li>
       </ul>
-      <details className="rounded-xl border border-line bg-surface/40 p-4">
+      <details ref={sourceRef} className="scroll-mt-24 rounded-xl border border-line bg-surface/40 p-4">
         <summary className="cursor-pointer text-ink font-semibold inline-flex items-center gap-2"><Code2 className="size-4 text-sign" /> Ver el código JavaScript que ejecuta esta página</summary>
         <pre className="mt-4 max-h-[32rem] overflow-auto rounded-lg bg-bg p-4 font-mono text-xs leading-relaxed text-ink-dim">{solverSource}</pre>
       </details>
