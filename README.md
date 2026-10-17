@@ -2,7 +2,7 @@
 
 > **Universidad Nacional de Colombia**  
 > **Curso:** Análisis Numérico  
-> **Despliegue en Vivo:** [https://itsDeyvixd.github.io/Astronomy-Numerical-Analysis/](https://itsDeyvixd.github.io/Astronomy-Numerical-Analysis/)
+> **Despliegue en Vivo:** [Astronomía Numérica · Tarea 2](https://astronomia-numerica-unal-tarea2.artful-scout-2566.chatgpt.site)
 
 ---
 
@@ -20,8 +20,8 @@ En la física astronómica, las leyes fundamentales frecuentemente generan relac
 |---|---|---|---|---|
 | **Ecuación de Kepler** | Mecánica celeste y órbitas elípticas ($M = E - e\sin(E)$) | Bisección Robusta (Hard Real-Time), Newton, Punto Fijo | **Deyvi Ardila** | ✅ Completo |
 | **Corrimiento al Rojo ($z$)** | Cosmología $\Lambda\text{CDM}$ y Supernovas Tipo Ia ($D_L(z) - D_{\text{obs}} = 0$) | Bisección & Cuadratura de Simpson | **Nicolas Betancur** | ✅ Completo |
-| **Puntos de Lagrange** | Problema restringido de tres cuerpos (Polinomio quíntico de Euler) | Bisección & Newton-Raphson | **German** | 🔄 En desarrollo |
-| **Ley de Wien** | Radiación de cuerpo negro estelar ($x = 5(1 - e^{-x})$) | Punto Fijo & Newton-Raphson | **Huertas** | 🔄 En desarrollo |
+| **Puntos de Lagrange** | Problema circular restringido de tres cuerpos (Quínticos de Euler para L₁, L₂ y L₃) | Bisección & Newton-Raphson | **German Rodriguez** | ✅ Completo |
+| **Ley de Wien** | Radiación de cuerpo negro estelar ($x = 5(1 - e^{-x})$) | Punto Fijo & Newton-Raphson | **Juan Huertas** | ✅ Completo |
 
 ---
 
@@ -54,6 +54,27 @@ En la carpeta `/docs` se encuentran los informes experimentales completos en for
 * [`docs/resultados-experimentos-biseccion-v2.md`](./docs/resultados-experimentos-biseccion-v2.md): Reporte experimental y banco de pruebas de supernovas Tipo Ia por Nicolas Betancur.
 * [`docs/intuicion-inicial-kepler.md`](./docs/intuicion-inicial-kepler.md): Documento teórico de la Ecuación de Kepler y las tres anomalías orbitales por Deyvi Ardila.
 * [`docs/resultados-kepler-biseccion.md`](./docs/resultados-kepler-biseccion.md): Análisis experimental de Bisección, determinismo temporal y límites IEEE 754 por Deyvi Ardila.
+* [`docs/lagrange-fundamentos.md`](./docs/lagrange-fundamentos.md): Deducción, métodos y guía para explicar los puntos de Lagrange por German Rodriguez.
+* [`docs/resultados-lagrange.md`](./docs/resultados-lagrange.md): Resultados generados de 48 experimentos de precisión y 6 pruebas de semillas, con referencia independiente de 80 dígitos.
+
+### Experimento de Lagrange
+
+Desde la raíz del repositorio, con Python 3 y Node.js disponibles:
+
+```bash
+python scripts/experimento_lagrange.py
+```
+
+Solo usa la biblioteca estándar de Python y el motor JavaScript compartido con la web. Regenera el informe, las trazas CSV y `frontend/src/lib/lagrangeData.json`. La simulación binary32 redondea los datos, coeficientes y cada operación básica; binary64 usa `Number`. El verificador Decimal calcula errores sin redondear primero la referencia a doble precisión.
+
+En la web: **Intuición inicial / Resultados / Conclusiones → Puntos de Lagrange**. También se puede abrir `#/resultados?modelo=lagrange`. Los controles recalculan los métodos en el navegador; las tablas del experimento publicado y sus descargas provienen de la ejecución del script.
+
+Comprobaciones específicas, desde `frontend`:
+
+```bash
+npm run test:lagrange
+npm run build
+```
 
 ---
 

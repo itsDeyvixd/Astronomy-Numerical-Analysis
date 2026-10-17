@@ -51,7 +51,7 @@ export default function KeplerResultados() {
 
   // Raíz de alta precisión calculada previamente para medir el error verdadero
   const exactRoot = useMemo(() => {
-    // Calculamos con 50 iteraciones de Newton de alta precisión como 'benchmark'
+    // Se calcula con 50 iteraciones de Newton de alta precisión como 'benchmark'
     let val = M;
     for (let i = 0; i < 50; i++) {
       const res = val - e * Math.sin(val) - M;
@@ -224,7 +224,7 @@ export default function KeplerResultados() {
             2. Laboratorio Computacional de Bisección para Órbitas Reales
           </h3>
           <p className="text-sm text-ink-dim mt-1">
-            Selecciona un cuerpo astronómico real y la tolerancia deseada para ejecutar el algoritmo de Bisección paso a paso y analizar la evolución del error en tiempo real.
+            Seleccione un cuerpo astronómico real y la tolerancia deseada para ejecutar el algoritmo de Bisección paso a paso y analizar la evolución del error en tiempo real.
           </p>
         </div>
 
@@ -410,7 +410,7 @@ export default function KeplerResultados() {
 
             {simulation.history.length > maxRows && (
               <p className="text-[11px] font-mono text-ink-faint text-center mt-2">
-                Mostrando {maxRows} de {simulation.history.length} iteraciones. Aumenta el filtro arriba para ver la tabla completa.
+                Se muestran {maxRows} de {simulation.history.length} iteraciones. El filtro superior permite ampliar la cantidad de filas visibles.
               </p>
             )}
           </div>
@@ -431,7 +431,7 @@ export default function KeplerResultados() {
               <AlertTriangle className="size-4 text-sign" /> El Mito de la Monotonicidad del Error
             </h4>
             <p className="text-xs text-ink-dim leading-relaxed">
-              Al analizar la columna de <strong>Error Real</strong> frente a la <strong>Cota Teórica</strong>, se observa un fenómeno fundamental estudiado en el curso:
+              Al analizar la columna de <strong>Error Real</strong> frente a la <strong>Cota Teórica</strong>, se observa el siguiente comportamiento:
             </p>
             <ul className="text-xs text-ink-dim space-y-2 list-disc pl-4">
               <li>

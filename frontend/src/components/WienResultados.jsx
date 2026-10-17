@@ -25,7 +25,7 @@ export default function WienResultados() {
           <Terminal className="size-5" /> Datos de experimentos pendientes
         </div>
         <p className="text-ink-dim leading-relaxed font-sans text-sm">
-          Ejecuta en tu terminal dentro de la carpeta <code>frontend</code> para generar los datos reales:
+          Para generar los datos reales, se ejecuta el siguiente comando desde la carpeta <code>frontend</code>:
         </p>
         <pre className="p-4 rounded-xl bg-bg border border-line text-mant">
           python generar_resultados_wien.py

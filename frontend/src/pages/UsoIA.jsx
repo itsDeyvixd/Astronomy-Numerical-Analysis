@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import geminiImg from "../assets/Gemini1.png";
 import PageTransition from "../components/PageTransition.jsx";
+import Formula from "../components/Formula.jsx";
+import { LagrangeMath } from "../components/LagrangeShared.jsx";
 
 export default function UsoIA() {
   useEffect(() => {
@@ -12,7 +14,7 @@ export default function UsoIA() {
       <h1 className="text-3xl font-display font-bold text-exp">Uso de IA</h1>
       
       <p className="mt-4 text-ink-dim leading-relaxed">
-        Como punto de partida para este proyecto, consultamos a la IA para entender 
+        Como punto de partida para este proyecto, se recurrió a herramientas de inteligencia artificial para comprender
         la utilidad fundamental de los métodos numéricos en la resolución de modelos astronómicos.
       </p>
 
@@ -100,6 +102,42 @@ export default function UsoIA() {
           </div>
         </div>
       </div>
+      <section className="mt-10 rounded-xl border border-sign/30 bg-surface/60 p-5 sm:p-7 space-y-5 text-sm sm:text-base text-ink-dim leading-relaxed">
+        <h2 className="text-xl font-display font-semibold text-sign">Puntos de Lagrange · Germán Rodríguez</h2>
+        <p className="border-b border-line pb-5 italic text-ink">
+          ¿Cómo permiten los métodos numéricos encontrar una posición de equilibrio entre el Sol, la Tierra y una nave espacial?
+        </p>
+        <p>
+          En el problema circular restringido de tres cuerpos, la nave tiene una masa tan pequeña que no altera el movimiento del Sol y la Tierra. En un marco de referencia que gira con estos dos cuerpos, los puntos de Lagrange son posiciones donde la gravedad y el efecto centrífugo permiten que la nave permanezca en reposo relativo.
+        </p>
+        <p>
+          Para localizar <Formula tex="L_1" />, situado entre el Sol y la Tierra, su distancia a la Tierra se expresa como una fracción de la separación entre ambos cuerpos: <Formula tex="r=d/R" />. La condición de equilibrio se transforma en un polinomio quíntico:
+        </p>
+        <LagrangeMath tex={String.raw`P(r)=r^5-(3-\mu)r^4+(3-2\mu)r^3-\mu r^2+2\mu r-\mu=0`} />
+        <p>
+          Aquí, <Formula tex="\mu" /> representa la masa de la Tierra dividida por la masa total del sistema. Se calculan aproximaciones sucesivas de la raíz del polinomio y se recupera la distancia física mediante <Formula tex="d=Rr" />.
+        </p>
+        <h3 className="text-lg font-bold text-ink border-b border-line pb-2">Solución mediante bisección y Newton–Raphson</h3>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-line border-l-4 border-l-sign bg-surface-2 p-5 space-y-3">
+            <h4 className="font-bold text-ink">1. Bisección: reducir el intervalo de búsqueda</h4>
+            <p>El método parte de un intervalo donde el polinomio es continuo y cambia de signo. Se calcula su punto medio y se conserva la mitad que contiene la raíz. La repetición del proceso reduce la incertidumbre de la posición de forma predecible.</p>
+            <LagrangeMath tex={String.raw`c_k=a_k+\frac{b_k-a_k}{2}`} />
+          </div>
+          <div className="rounded-lg border border-line border-l-4 border-l-exp bg-surface-2 p-5 space-y-3">
+            <h4 className="font-bold text-ink">2. Newton–Raphson: corregir la aproximación con la pendiente</h4>
+            <p>Desde una posición inicial, se utilizan el valor del polinomio y su derivada para calcular una corrección. Cerca de una raíz simple, el método puede ganar precisión mucho más rápido, aunque su comportamiento depende de la semilla elegida.</p>
+            <LagrangeMath tex={String.raw`r_{k+1}=r_k-\frac{P(r_k)}{P'(r_k)}`} />
+          </div>
+        </div>
+        <h3 className="text-lg font-bold text-ink border-b border-line pb-2">El límite de la aritmética de punto flotante</h3>
+        <p>
+          La computadora representa los números con una cantidad finita de bits. En IEEE 754, binary32 ofrece aproximadamente 7 dígitos decimales y binary64 alrededor de 16. Cuando dos aproximaciones quedan demasiado cerca, la siguiente corrección puede redondearse al mismo número y el método deja de avanzar.
+        </p>
+        <p>
+          Por eso, además de comparar bisección y Newton, el experimento observa el error, el residuo y el motivo de parada en ambos formatos. Un residuo redondeado a cero no demuestra que se haya encontrado una solución exacta: es necesario distinguir la precisión alcanzada del límite de representación de la máquina.
+        </p>
+      </section>
     </PageTransition>
   );
 }

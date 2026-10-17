@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
 import KeplerResultados from "../components/KeplerResultados.jsx";
 import WienResultados from "../components/WienResultados.jsx";
+import LagrangeResultados from "../components/LagrangeResultados.jsx";
 import errorImg from "../assets/error-no-monotono-biseccion.png";
 import { 
   Telescope, Orbit, Compass, Flame, Table, 
@@ -14,7 +16,7 @@ const TEMAS = [
     id: "redshift", 
     title: "Corrimiento al Rojo (z)", 
     subtitle: "Supernovas Tipo Ia · Método de Bisección", 
-    author: "Nicolas", 
+    author: "Nicolas Betancur",
     icon: Telescope,
     accent: "mant" 
   },
@@ -30,7 +32,7 @@ const TEMAS = [
     id: "lagrange", 
     title: "Puntos de Lagrange", 
     subtitle: "Equilibrio Gravitacional de 3 Cuerpos", 
-    author: "German", 
+    author: "Germán Rodríguez",
     icon: Compass,
     accent: "sign" 
   },
@@ -38,7 +40,7 @@ const TEMAS = [
     id: "wien", 
     title: "Ley de Wien", 
     subtitle: "Radiación de Cuerpo Negro", 
-    author: "Huertas", 
+    author: "Juan Huertas",
     icon: Flame,
     accent: "exp" 
   },
@@ -71,7 +73,8 @@ const ITERACIONES = [
 ];
 
 export default function Resultados() {
-  const [activeTab, setActiveTab] = useState("redshift");
+  const [searchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState(() => TEMAS.some(t => t.id === searchParams.get("modelo")) ? searchParams.get("modelo") : "redshift");
   const [showCode, setShowCode] = useState(false);
 
   return (
@@ -660,7 +663,7 @@ def biseccion_cosmologica(a=0.0, b=5.0, tol=1e-6, max_iter=100):
                   />
                 </div>
 
-                <p>A medida que nos aproximamos a la raíz verdadera:</p>
+                <p>A medida que las aproximaciones se acercan a la raíz verdadera:</p>
 
                 <ol className="list-decimal pl-5 space-y-3 text-sm">
                   <li>
@@ -740,7 +743,7 @@ def biseccion_cosmologica(a=0.0, b=5.0, tol=1e-6, max_iter=100):
                 </div>
 
                 <p className="text-ink-dim leading-relaxed">
-                  Evaluando en los parámetros adoptados para nuestra supernova (<Formula tex="z^* = 0.82" />, <Formula tex="D_L \approx 5172.5730\text{ Mpc}" />):
+                  Evaluando en los parámetros adoptados para la supernova del estudio (<Formula tex="z^* = 0.82" />, <Formula tex="D_L \approx 5172.5730\text{ Mpc}" />):
                 </p>
 
                 <ol className="list-decimal pl-5 space-y-2 text-ink-dim text-sm">
@@ -812,7 +815,7 @@ def biseccion_cosmologica(a=0.0, b=5.0, tol=1e-6, max_iter=100):
                   </div>
                   <div className="p-4 rounded-xl border border-line bg-surface/70 space-y-2">
                     <span className="text-xs font-mono text-mant font-semibold block uppercase">
-                      2. Peligro en funciones de pendiente empinada (<Formula tex="|f'(z^*)| \gg 1" />, nuestro caso cosmológico):
+                      2. Peligro en funciones de pendiente empinada (<Formula tex="|f'(z^*)| \gg 1" />, el caso cosmológico estudiado):
                     </span>
                     <p className="text-ink-dim text-xs leading-relaxed">
                       Como la pendiente es <Formula tex="\approx 7763" />, exigir por inadvertencia un residuo <Formula tex="|f(c)| < 10^{-6}\text{ Mpc}" /> obligaría a que el error en <Formula tex="z" /> bajase hasta:
@@ -891,25 +894,8 @@ def biseccion_cosmologica(a=0.0, b=5.0, tol=1e-6, max_iter=100):
         {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI) ---------------- */}
         {activeTab === "kepler" && <KeplerResultados />}
         {activeTab === "wien" && <WienResultados />}
+        {activeTab === "lagrange" && <LagrangeResultados />}
 
-        {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
-        {activeTab !== "redshift" && activeTab !== "kepler" && (
-          <div className="animate-in fade-in duration-300 py-16 px-6 border border-dashed border-line rounded-xl flex flex-col items-center justify-center text-center bg-surface/20">
-            <div className="p-3 rounded-full bg-surface-2 text-ink-dim mb-3">
-              {activeTab === "lagrange" && <Compass className="size-8 text-sign" />}
-              {activeTab === "wien" && <Flame className="size-8 text-exp" />}
-            </div>
-            <h3 className="text-xl font-display font-semibold text-ink">
-              {TEMAS.find(t => t.id === activeTab)?.title}
-            </h3>
-            <p className="text-sm text-ink-dim max-w-md mt-2">
-              Sección reservada para los resultados experimentales, tablas iterativas y análisis numérico de este modelo.
-            </p>
-            <span className="mt-4 font-mono text-xs px-3 py-1 rounded-full bg-surface text-ink-faint border border-line">
-              Resultados en desarrollo · Esperando experimentos de {TEMAS.find(t => t.id === activeTab)?.author}
-            </span>
-          </div>
-        )}
 
       </div>
     </PageTransition>

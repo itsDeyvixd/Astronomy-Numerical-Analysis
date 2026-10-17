@@ -66,7 +66,7 @@ export default function WienIntuicion() {
         </h3>
 
         <p className="text-ink-dim leading-relaxed">
-          En el marco de nuestra investigación en Análisis Numérico, abordamos la pregunta central del proyecto desde la física térmica estelar:
+          La investigación aborda la pregunta central del proyecto desde la física térmica estelar:
         </p>
 
         <div className="p-4 sm:p-5 rounded-xl border border-line bg-surface/70 border-l-4 border-l-exp my-4 shadow-inner">
@@ -76,7 +76,7 @@ export default function WienIntuicion() {
         </div>
 
         <p className="text-ink-dim leading-relaxed">
-          Es físicamente imposible enviar una sonda con un termómetro de contacto a la fotosfera del Sol (<Formula tex="T \approx 5778\text{ K}" />) o a una supergigante azul como Rigel (<Formula tex="T \approx 12\,100\text{ K}" />). La única información que llega a nuestros telescopios es su <strong className="text-ink">espectro electromagnético</strong>. Determinar la temperatura de una estrella a partir del color donde brilla con mayor intensidad exige encontrar el máximo global de la curva de radiación de cuerpo negro, un problema de cálculo diferencial que desemboca inevitablemente en una ecuación no lineal trascendente.
+          Es físicamente imposible enviar una sonda con un termómetro de contacto a la fotosfera del Sol (<Formula tex="T \approx 5778\text{ K}" />) o a una supergigante azul como Rigel (<Formula tex="T \approx 12\,100\text{ K}" />). La única información que llega a los telescopios es su <strong className="text-ink">espectro electromagnético</strong>. Determinar la temperatura de una estrella a partir del color donde brilla con mayor intensidad exige encontrar el máximo global de la curva de radiación de cuerpo negro, un problema de cálculo diferencial que desemboca inevitablemente en una ecuación no lineal trascendente.
         </p>
       </section>
 
@@ -111,7 +111,7 @@ export default function WienIntuicion() {
             2.2. Condición de Máximo Espectral y Cambio de Variable Adimensional
           </h4>
           <p className="text-ink-dim leading-relaxed text-sm sm:text-base">
-            Para hallar la longitud de onda <Formula tex="\lambda_{\max}" /> donde la emisión estelar alcanza su cúspide, derivamos parcialmente respecto a <Formula tex="\lambda" /> e igualamos a cero:
+            Para hallar la longitud de onda <Formula tex="\lambda_{\max}" /> donde la emisión estelar alcanza su cúspide, se deriva parcialmente respecto a <Formula tex="\lambda" /> y se iguala a cero:
           </p>
 
           <div className="my-3 flex justify-center py-3 bg-bg/80 border border-line rounded-lg overflow-x-auto">
@@ -122,7 +122,7 @@ export default function WienIntuicion() {
           </div>
 
           <p className="text-ink-dim leading-relaxed text-sm sm:text-base">
-            Aplicando la regla del producto y definiendo el grupo adimensional de energía fotónica-térmica <Formula tex="x = \frac{hc}{\lambda k_B T}" />, obtenemos tras simplificar factores estrictamente positivos:
+            Aplicando la regla del producto y definiendo el grupo adimensional de energía fotónica-térmica <Formula tex="x = \frac{hc}{\lambda k_B T}" />, se obtiene, tras simplificar factores estrictamente positivos:
           </p>
 
           <div className="my-3 flex justify-center py-4 bg-surface border border-exp/40 rounded-xl shadow-inner overflow-x-auto">
@@ -312,7 +312,7 @@ export default function WienIntuicion() {
         </h3>
 
         <p className="text-ink-dim leading-relaxed">
-          Para resolver <Formula tex="f(x) = x + 5e^{-x} - 5 = 0" /> descartando la raíz trivial no física <Formula tex="x = 0" /> (que correspondería a <Formula tex="\lambda \to \infty" />), analizamos las garantías y patologías de tres familias algorítmicas vistas en clase:
+          Para resolver <Formula tex="f(x) = x + 5e^{-x} - 5 = 0" /> descartando la raíz trivial no física <Formula tex="x = 0" /> (que correspondería a <Formula tex="\lambda \to \infty" />), se analizan las garantías y dificultades de tres familias de métodos numéricos:
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

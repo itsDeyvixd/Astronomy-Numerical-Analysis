@@ -23,7 +23,7 @@ const TEAM_MODELS = [
     id: "redshift",
     title: "Corrimiento al Rojo (z)",
     subtitle: "Cosmología ΛCDM y Supernovas Tipo Ia",
-    author: "Nicolas",
+    author: "Nicolas Betancur",
     accent: "mant",
     icon: Telescope,
     formula: "D_L(z) - D_{\\text{obs}} = 0",
@@ -35,25 +35,25 @@ const TEAM_MODELS = [
     id: "lagrange",
     title: "Puntos de Lagrange",
     subtitle: "Problema Restringido de 3 Cuerpos",
-    author: "German",
+    author: "Germán Rodríguez",
     accent: "sign",
     icon: Compass,
     formula: "\\text{Polinomio Quíntico de Euler}",
     desc: "Ubicación de zonas de equilibrio gravitacional en sistemas binarios (Tierra-Sol) para el estacionamiento de observatorios espaciales.",
     methods: ["Bisección", "Newton-Raphson"],
-    status: "En desarrollo"
+    status: "Completo"
   },
   {
     id: "wien",
     title: "Ley de Wien",
     subtitle: "Termodinámica y Radiación Estelar",
-    author: "Huertas",
+    author: "Juan Huertas",
     accent: "exp",
     icon: Flame,
     formula: "x = 5(1 - e^{-x})",
     desc: "Determinación de la temperatura superficial de estrellas a partir del pico de emisión espectral en la ley de radiación de Planck.",
     methods: ["Punto Fijo", "Newton-Raphson"],
-    status: "En desarrollo"
+    status: "Completo"
   }
 ];
 
@@ -81,7 +81,7 @@ export default function Landing() {
         </p>
 
         <p className="mt-4 text-base sm:text-lg text-ink-dim max-w-2xl leading-relaxed">
-          En la física astronómica, las leyes fundamentales frecuentemente generan relaciones trascendentes e integrales sin solución matemática analítica. Aquí exploramos cómo el cálculo numérico permite descubrir lo que el álgebra no puede despejar.
+          En la física astronómica, las leyes fundamentales frecuentemente generan relaciones trascendentes e integrales sin solución matemática analítica. Se examina cómo el cálculo numérico permite descubrir lo que el álgebra no puede despejar.
         </p>
 
         {/* Tarjeta de la Pregunta Orientadora */}
@@ -167,7 +167,7 @@ export default function Landing() {
                     <span className="text-ink font-semibold">{m.author}</span>
                   </div>
                   <Link
-                    to="/intuicion"
+                    to={`/intuicion?modelo=${m.id}`}
                     className="inline-flex items-center gap-1 text-xs font-mono text-exp hover:text-mant transition-colors"
                   >
                     Ver análisis <ArrowRight className="size-3" />
@@ -187,7 +187,7 @@ export default function Landing() {
             Física Teórica vs Aritmética de Máquina (IEEE 754)
           </h2>
           <p className="text-xs sm:text-sm text-ink-dim mt-2 leading-relaxed">
-            Nuestros experimentos no se limitan a aplicar fórmulas matemáticas; analizamos cómo las restricciones físicas de las computadoras influyen en la exactitud científica.
+            Los experimentos examinan cómo las restricciones físicas de las computadoras influyen en la exactitud científica.
           </p>
         </div>
 
@@ -197,7 +197,7 @@ export default function Landing() {
               <Binary className="size-4" /> Precisión Simple vs Doble
             </div>
             <p className="text-xs text-ink-dim leading-relaxed">
-              Comparamos la barrera de estancamiento de máquina entre <code className="text-sign font-mono">float32</code> (24 bits mantisa, límite en iteración 24) y <code className="text-mant font-mono">float64</code> (53 bits, 16 decimales de precisión).
+              Se compara la barrera de estancamiento de máquina entre <code className="text-sign font-mono">float32</code> (24 bits mantisa, límite en iteración 24) y <code className="text-mant font-mono">float64</code> (53 bits, 16 decimales de precisión).
             </p>
           </div>
 
@@ -206,7 +206,7 @@ export default function Landing() {
               <ShieldCheck className="size-4" /> Garantía de Bolzano
             </div>
             <p className="text-xs text-ink-dim leading-relaxed">
-              Construimos intervalos canónicos cerrados donde la física asegura un cambio de signo formal, logrando convergencia incondicional sin riesgo de singularidades.
+              Se construyen intervalos canónicos cerrados donde la física asegura un cambio de signo formal, logrando convergencia incondicional sin riesgo de singularidades.
             </p>
           </div>
 
@@ -215,7 +215,7 @@ export default function Landing() {
               <Cpu className="size-4" /> Misión Crítica (Hard Real-Time)
             </div>
             <p className="text-xs text-ink-dim leading-relaxed">
-              Analizamos por qué software aeroespacial como NASA SPICE y receptores GPS confían en métodos con ciclos de reloj estrictamente acotados para garantizar vidas y satélites.
+              Se analiza por qué software aeroespacial como NASA SPICE y receptores GPS confían en métodos con ciclos de reloj estrictamente acotados para garantizar vidas y satélites.
             </p>
           </div>
         </div>

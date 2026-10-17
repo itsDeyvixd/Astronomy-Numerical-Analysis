@@ -7,7 +7,7 @@ export default function KeplerConclusiones() {
   return (
     <article className="space-y-10 animate-in fade-in duration-300">
       
-      {/* Encabezado del Informe (Idéntico estilo visual al de Nicolás) */}
+      {/* Encabezado del Informe (Idéntico estilo visual al de Nicolas Betancur) */}
       <header className="p-6 rounded-2xl border border-exp/30 bg-surface/80 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-exp/5 rounded-full blur-3xl pointer-events-none" />
         <div className="flex flex-wrap items-center justify-between gap-4 relative z-10">
@@ -75,7 +75,7 @@ export default function KeplerConclusiones() {
               <ShieldCheck className="size-5" /> 1. Robustez Incondicional frente a Excentricidades Extremas
             </div>
             <p className="text-xs text-ink-dim leading-relaxed">
-              Mientras que los métodos basados en tangentes (como Newton) sufren sobredisparos o divergencias cuando <Formula tex="e \to 1" /> y el cuerpo cruza el perihelio (donde <Formula tex="f'(0) \approx 0" />), el método de Bisección se mantiene <strong className="text-ink">matemáticamente implacable</strong>. En nuestro experimento con el <strong>Cometa Halley</strong> (<Formula tex="e = 0.9671" />), Bisección redujo el intervalo de forma regular sin experimentar ninguna inestabilidad.
+              Mientras que los métodos basados en tangentes (como Newton) sufren sobredisparos o divergencias cuando <Formula tex="e \to 1" /> y el cuerpo cruza el perihelio (donde <Formula tex="f'(0) \approx 0" />), el método de Bisección se mantiene <strong className="text-ink">matemáticamente implacable</strong>. En el experimento con el <strong>Cometa Halley</strong> (<Formula tex="e = 0.9671" />), Bisección redujo el intervalo de forma regular sin experimentar ninguna inestabilidad.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ export default function KeplerConclusiones() {
               <Cpu className="size-5" /> 2. El Valor del Determinismo Temporal en Sistemas de Misión Crítica
             </div>
             <p className="text-xs text-ink-dim leading-relaxed">
-              En la ingeniería aeroespacial moderna (NASA SPICE Toolkit, satélites GPS y sistemas de control de actitud de la ESA), la rapidez pura de un algoritmo es secundaria frente a su <strong className="text-ink">predictibilidad en tiempo real (Hard Real-Time)</strong>. Bisección proporciona un contrato matemático exacto: para una tolerancia dada <Formula tex="\varepsilon = 10^{-12}" />, sabemos que el procesador de vuelo finalizará en exactamente <Formula tex="N = \lceil \log_2(2e/\varepsilon) \rceil" /> ciclos, eliminando el riesgo de retrasos en maniobras orbitales críticas.
+              En la ingeniería aeroespacial moderna (NASA SPICE Toolkit, satélites GPS y sistemas de control de actitud de la ESA), la rapidez pura de un algoritmo es secundaria frente a su <strong className="text-ink">predictibilidad en tiempo real (Hard Real-Time)</strong>. Bisección proporciona un contrato matemático exacto: para una tolerancia dada <Formula tex="\varepsilon = 10^{-12}" />, se establece que el procesador de vuelo finalizará en exactamente <Formula tex="N = \lceil \log_2(2e/\varepsilon) \rceil" /> ciclos, eliminando el riesgo de retrasos en maniobras orbitales críticas.
             </p>
           </div>
 

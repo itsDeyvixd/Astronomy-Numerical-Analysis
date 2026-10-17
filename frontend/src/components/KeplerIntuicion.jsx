@@ -97,7 +97,7 @@ export default function KeplerIntuicion() {
         </h3>
         
         <p className="text-ink-dim leading-relaxed">
-          En el marco del curso de Análisis Numérico, abordamos la pregunta orientadora fundamental del proyecto:
+          El análisis se organiza a partir de la pregunta orientadora del proyecto:
         </p>
 
         <div className="p-4 sm:p-5 rounded-xl border border-line bg-surface/70 border-l-4 border-l-exp my-4 shadow-inner">
@@ -107,7 +107,7 @@ export default function KeplerIntuicion() {
         </div>
 
         <p className="text-ink-dim leading-relaxed">
-          Para responder a esta pregunta en la mecánica celeste clásica, nos centramos en la predicción del movimiento de planetas, asteroides y satélites a través de la <strong className="text-ink">Ecuación de Kepler</strong>. 
+          Para responder a esta pregunta en la mecánica celeste clásica, el estudio se centra en la predicción del movimiento de planetas, asteroides y satélites a través de la <strong className="text-ink">Ecuación de Kepler</strong>.
           Cuando Johannes Kepler formuló sus leyes en 1609, surgió una notable asimetría:
         </p>
 
@@ -121,13 +121,13 @@ export default function KeplerIntuicion() {
           <div className="p-4 rounded-xl border border-line bg-surface/40 border-l-4 border-l-sign">
             <span className="text-xs font-mono text-sign font-semibold block mb-1">El problema inverso (La realidad astronómica)</span>
             <p className="text-sm text-ink-dim leading-relaxed">
-              En astronomía y navegación espacial observamos el tiempo <Formula tex="t" /> (la fecha en el calendario). Se requiere hallar la posición real <Formula tex="E" />. ¡Pero es <strong className="text-ink">algebraicamente imposible despejar <Formula tex="E" /></strong>!
+              En astronomía y navegación espacial se conoce el tiempo <Formula tex="t" /> (la fecha en el calendario). Se requiere hallar la posición real <Formula tex="E" />. ¡Pero es <strong className="text-ink">algebraicamente imposible despejar <Formula tex="E" /></strong>!
             </p>
           </div>
         </div>
 
         <p className="text-ink-dim leading-relaxed">
-          Al estar la incógnita <Formula tex="E" /> simultáneamente como término lineal y dentro del argumento de una función trascendente periódica (<Formula tex="\sin E" />), ninguna combinación de operaciones elementales permite su despeje analítico. Kepler declaró que la solución general sólo podía obtenerse por aproximaciones sucesivas. Nuestra meta es formalizar y comparar numéricamente los métodos de <strong className="text-ink">Bisección</strong>, <strong className="text-ink">Newton-Raphson</strong> y <strong className="text-ink">Punto Fijo</strong>.
+          Al estar la incógnita <Formula tex="E" /> simultáneamente como término lineal y dentro del argumento de una función trascendente periódica (<Formula tex="\sin E" />), ninguna combinación de operaciones elementales permite su despeje analítico. Kepler declaró que la solución general sólo podía obtenerse por aproximaciones sucesivas. El objetivo es formalizar y comparar numéricamente los métodos de <strong className="text-ink">Bisección</strong>, <strong className="text-ink">Newton-Raphson</strong> y <strong className="text-ink">Punto Fijo</strong>.
         </p>
       </section>
 
@@ -344,7 +344,7 @@ export default function KeplerIntuicion() {
         </div>
 
         <p className="text-ink-dim leading-relaxed">
-          Para formular el problema en el marco del Análisis Numérico, trasladamos todos los términos a un solo lado, definiendo la <strong className="text-ink">función residual no lineal</strong>:
+          Para formular el problema en el marco del Análisis Numérico, se trasladan todos los términos a un solo lado, definiendo la <strong className="text-ink">función residual no lineal</strong>:
         </p>
 
         <div className="my-4 flex justify-center py-4 bg-surface border border-line rounded-xl shadow-inner">
@@ -457,7 +457,7 @@ export default function KeplerIntuicion() {
               <Formula tex={String.raw`E - e\sin(E) \approx E(1 - e) + \frac{e E^3}{6}`} block />
             </div>
             <p className="text-sm text-ink-dim leading-relaxed">
-              Si la excentricidad es muy alta (<Formula tex="e \approx 0.99" />), restar dos cantidades casi idénticas en punto flotante destruye los dígitos significativos de la mantisa. En nuestra experimentación evaluaremos formulaciones estables alternativas.
+              Si la excentricidad es muy alta (<Formula tex="e \approx 0.99" />), restar dos cantidades casi idénticas en punto flotante destruye los dígitos significativos de la mantisa. El experimento evalúa formulaciones estables alternativas.
             </p>
           </div>
 
@@ -495,10 +495,10 @@ export default function KeplerIntuicion() {
             La Ecuación de Kepler confirma contundentemente que los métodos numéricos no son una mera conveniencia, sino la única vía para operar los modelos dinámicos del sistema solar y las misiones aeroespaciales.
           </p>
           <p className="text-ink-dim leading-relaxed">
-            Nuestro análisis teórico demuestra que <strong className="text-ink">Bisección</strong> ofrece la máxima robustez incondicional mediante el intervalo <Formula tex="[M-e, M+e]" />, mientras que <strong className="text-ink">Newton-Raphson</strong> aporta una velocidad inigualable gracias a que <Formula tex="f'(E) \ge 1-e > 0" />. Por su parte, <strong className="text-ink">Punto Fijo</strong> exhibe una contracción de Banach directa cuya velocidad depende linealmente de la excentricidad del cuerpo astronómico analizado.
+            El análisis teórico demuestra que <strong className="text-ink">Bisección</strong> ofrece la máxima robustez incondicional mediante el intervalo <Formula tex="[M-e, M+e]" />, mientras que <strong className="text-ink">Newton-Raphson</strong> aporta una velocidad inigualable gracias a que <Formula tex="f'(E) \ge 1-e > 0" />. Por su parte, <strong className="text-ink">Punto Fijo</strong> exhibe una contracción de Banach directa cuya velocidad depende linealmente de la excentricidad del cuerpo astronómico analizado.
           </p>
           <p className="text-ink-dim leading-relaxed">
-            En la etapa siguiente de Resultados, contrastaremos estos tres métodos sobre cuerpos celestes reales (Tierra, Marte, Mercurio y Cometa Halley), midiendo órdenes de convergencia, número de evaluaciones de función y comportamiento frente a la precisión de punto flotante de 32 y 64 bits.
+            En la etapa siguiente de Resultados, se comparan estos tres métodos sobre cuerpos celestes reales (Tierra, Marte, Mercurio y Cometa Halley), midiendo órdenes de convergencia, número de evaluaciones de función y comportamiento frente a la precisión de punto flotante de 32 y 64 bits.
           </p>
         </div>
       </section>

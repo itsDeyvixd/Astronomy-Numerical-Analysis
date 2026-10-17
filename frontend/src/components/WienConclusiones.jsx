@@ -49,7 +49,7 @@ export default function WienConclusiones() {
             </h3>
           </div>
           <p className="text-ink-dim leading-relaxed text-sm sm:text-base pl-11">
-            La imposibilidad de despejar analíticamente <Formula tex="x" /> en la condición de máximo espectral de Planck (<Formula tex="x + 5e^{-x} - 5 = 0" />) demuestra que una ley fundamental de la astrofísica depende intrínsecamente del cálculo numérico. Al transformar el problema de optimización continua en una sucesión convergente de aproximaciones, determinamos la raíz adimensional <Formula tex="x^* \approx 4.965114231744276" /> y con ella la constante universal de desplazamiento de Wien <Formula tex="b = \frac{hc}{k_B x^*} \approx 2.897771955 \times 10^{-3}\text{ m}\cdot\text{K}" />.
+            La imposibilidad de despejar analíticamente <Formula tex="x" /> en la condición de máximo espectral de Planck (<Formula tex="x + 5e^{-x} - 5 = 0" />) demuestra que una ley fundamental de la astrofísica depende intrínsecamente del cálculo numérico. Al transformar el problema de optimización continua en una sucesión convergente de aproximaciones, se determina la raíz adimensional <Formula tex="x^* \approx 4.965114231744276" /> y con ella la constante universal de desplazamiento de Wien <Formula tex="b = \frac{hc}{k_B x^*} \approx 2.897771955 \times 10^{-3}\text{ m}\cdot\text{K}" />.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function WienConclusiones() {
           <Flame className="size-5 text-exp" /> Aplicación Directa: Termometría de Cuerpos Celestes Reales
         </h3>
         <p className="text-xs sm:text-sm text-ink-dim">
-          Utilizando la constante numérica convergida <Formula tex="b = 2.897771955 \times 10^6\text{ nm}\cdot\text{K}" />, contrastamos las temperaturas efectivas calculadas frente a las mediciones espectrales de referencia:
+          Utilizando la constante numérica convergida <Formula tex="b = 2.897771955 \times 10^6\text{ nm}\cdot\text{K}" />, se comparan las temperaturas efectivas calculadas frente a las mediciones espectrales de referencia:
         </p>
 
         <div className="overflow-x-auto rounded-xl border border-line bg-surface/90">

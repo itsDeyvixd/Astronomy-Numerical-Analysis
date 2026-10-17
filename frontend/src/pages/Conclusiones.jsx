@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PageTransition from "../components/PageTransition.jsx";
 import Formula from "../components/Formula.jsx";
 import KeplerConclusiones from "../components/KeplerConclusiones.jsx";
 import WienConclusiones from "../components/WienConclusiones.jsx";
+import LagrangeConclusiones from "../components/LagrangeConclusiones.jsx";
 import { 
   Telescope, Orbit, Compass, Flame, CheckCircle2, 
   ShieldCheck, Cpu, TrendingDown, Scale, Lightbulb
@@ -12,7 +14,7 @@ const TEMAS = [
     id: "redshift", 
     title: "Corrimiento al Rojo (z)", 
     subtitle: "Supernovas Tipo Ia · Método de Bisección", 
-    author: "Nicolas", 
+    author: "Nicolas Betancur",
     icon: Telescope,
     accent: "mant" 
   },
@@ -28,7 +30,7 @@ const TEMAS = [
     id: "lagrange", 
     title: "Puntos de Lagrange", 
     subtitle: "Equilibrio Gravitacional de 3 Cuerpos", 
-    author: "German", 
+    author: "Germán Rodríguez",
     icon: Compass,
     accent: "sign" 
   },
@@ -36,14 +38,15 @@ const TEMAS = [
     id: "wien", 
     title: "Ley de Wien", 
     subtitle: "Radiación de Cuerpo Negro", 
-    author: "Huertas", 
+    author: "Juan Huertas",
     icon: Flame,
     accent: "exp" 
   },
 ];
 
 export default function Conclusiones() {
-  const [activeTab, setActiveTab] = useState("redshift");
+  const [searchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState(() => TEMAS.some(t => t.id === searchParams.get("modelo")) ? searchParams.get("modelo") : "redshift");
 
   return (
     <PageTransition className="mx-auto max-w-5xl py-12 px-6">
@@ -61,7 +64,9 @@ export default function Conclusiones() {
           Conclusiones y Respuestas Orientadoras
         </h1>
         <p className="mt-3 text-ink-dim max-w-3xl leading-relaxed text-sm sm:text-base">
-          Síntesis de los hallazgos analíticos, computacionales y físicos obtenidos tras aplicar métodos de búsqueda de raíces a los problemas astrofísicos y responder a las preguntas orientadoras del proyecto.
+          {activeTab === "lagrange"
+            ? "Del equilibrio Sol–Tierra a sus resultados: qué aporta cada método, cómo cambia la precisión entre 32 y 64 bits y qué enseñan los errores observados."
+            : "Síntesis de los hallazgos analíticos, computacionales y físicos obtenidos tras aplicar métodos de búsqueda de raíces a los problemas astrofísicos y responder a las preguntas orientadoras del proyecto."}
         </p>
       </div>
 
@@ -234,24 +239,7 @@ export default function Conclusiones() {
         {/* ---------------- TEMA: ECUACIÓN DE KEPLER (DEYVI) ---------------- */}
         {activeTab === "kepler" && <KeplerConclusiones />}
         {activeTab === "wien" && <WienConclusiones />}
-        {/* ---------------- PLACEHOLDERS PARA LOS DEMÁS TEMAS ---------------- */}
-        {activeTab !== "redshift" && activeTab !== "kepler" && (
-          <div className="animate-in fade-in duration-300 py-16 px-6 border border-dashed border-line rounded-xl flex flex-col items-center justify-center text-center bg-surface/20">
-            <div className="p-3 rounded-full bg-surface-2 text-ink-dim mb-3">
-              {activeTab === "lagrange" && <Compass className="size-8 text-sign" />}
-              {activeTab === "wien" && <Flame className="size-8 text-exp" />}
-            </div>
-            <h3 className="text-xl font-display font-semibold text-ink">
-              {TEMAS.find(t => t.id === activeTab)?.title}
-            </h3>
-            <p className="text-sm text-ink-dim max-w-md mt-2">
-              Sección reservada para las conclusiones y respuestas a la pregunta orientadora de este modelo astronómico.
-            </p>
-            <span className="mt-4 font-mono text-xs px-3 py-1 rounded-full bg-surface text-ink-faint border border-line">
-              Conclusiones en desarrollo · Esperando defensa de {TEMAS.find(t => t.id === activeTab)?.author}
-            </span>
-          </div>
-        )}
+        {activeTab === "lagrange" && <LagrangeConclusiones />}
 
       </div>
     </PageTransition>
